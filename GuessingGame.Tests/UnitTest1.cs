@@ -7,7 +7,7 @@ namespace GuessingGame.Tests;
 public class UnitTest1
 {
     [Fact]
-    public void GetResult_found()
+    public void GetResult_Win()
     {
 
         int minRange = 4;
