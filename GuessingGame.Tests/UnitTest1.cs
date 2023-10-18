@@ -18,6 +18,5 @@ public class UnitTest1
         Service service = new Service(numberGenerator);
         service.GetResult(minRange,maxRange,6);
         Assert.True(true);
-
     }
 }
