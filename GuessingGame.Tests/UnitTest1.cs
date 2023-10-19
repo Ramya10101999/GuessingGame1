@@ -7,36 +7,33 @@ namespace GuessingGame.Tests;
 public class UnitTest1
 {
     [Fact]
-    public void GetResult_found()
+    public void Test_For_Linning_GuessingGameResult()
     {
 
-        int minRange = 4;
+        int minRange = 1;
         int maxRange = 5;
         int guessNumber = 3;
         INumberGenerator numberGenerator = Substitute.For<INumberGenerator>();
         numberGenerator.Generate(minRange, maxRange).Returns(guessNumber);
-        Service service = new Service(numberGenerator);
-        string result=service.GetResult(minRange,maxRange,6);
-        Assert.True(true);
+        GuessingGameService service = new GuessingGameService(numberGenerator);
+        string result = service.GuessingGameResult(minRange, maxRange, 5);
+        Assert.Equal("Congratulations", result);
 
     }
 
-    // [Fact]
-    // public void GetNumber_Test(){
-    //     int number=3;
-    //     Assert.Equal(3,number);
-    // }
 
-     [Fact]
-    public void GetAmount_Test(){
-        int number=323;
-        Assert.Equal(3,number);
-    }
+    [Fact]
+    public void Test_For_Loss_GuessingGameResult()
+    {
+        int minRange = 1;
+        int maxRange = 5;
+        int guessNumber = 6;
+        INumberGenerator numberGenerator = Substitute.For<INumberGenerator>();
+        numberGenerator.Generate(minRange, maxRange).Returns(guessNumber);
+        GuessingGameService service = new GuessingGameService(numberGenerator);
+        string result = service.GuessingGameResult(minRange, maxRange, 5);
+        Assert.Equal("Sorry, you lost.", result);
 
-     [Fact]
-    public void GetLevel_Test(){
-        string number="easy";
-        Assert.Equal("easy",number);
     }
 
 }

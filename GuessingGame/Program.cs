@@ -10,11 +10,11 @@ namespace GuessingGame
     {
         public static void Main(string[] args)
         {
-             INumberGenerator numberGenerator = new RandomNumberGenerator();
-            Service result=new Service(numberGenerator);          
+            INumberGenerator numberGenerator = new RandomNumberGenerator();
+            GuessingGameService result = new GuessingGameService(numberGenerator);
             Console.WriteLine("Welcome to the Guessing Game!");
-             var level=result.GetLevel();
-        
+            var level = result.ChooseDifficultyLevelWhichReturnMinMaxMutipler();
+
         }
     }
 }
