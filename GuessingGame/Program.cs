@@ -12,8 +12,10 @@ namespace GuessingGame
         {
             INumberGenerator numberGenerator = new RandomNumberGenerator();
             GuessingGameService result = new GuessingGameService(numberGenerator);
+            int amount= result.MoneyToBet();
+            int guessNumber=result.GuessNumber();
             Console.WriteLine("Welcome to the Guessing Game!");
-            var level = result.ChooseDifficultyLevelWhichReturnMinMaxMutipler();
+            var level = result.ChooseDifficultyLevelWhichReturnMinMaxMutipler(amount,guessNumber);
 
         }
     }

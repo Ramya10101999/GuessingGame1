@@ -36,7 +36,7 @@ namespace GuessingGame
             return number;
         }
 
-        public string ChooseDifficultyLevelWhichReturnMinMaxMutipler()
+        public string ChooseDifficultyLevelWhichReturnMinMaxMutipler(int amount,int guessNumber)
         {
             Console.Write(" Choose level (Easy/Medium/Hard) : ");
             string difficulty = Console.ReadLine();
@@ -44,37 +44,34 @@ namespace GuessingGame
             switch (difficulty.ToLower())
             {
                 case "easy":
-                    return GuessingGameResult(1, 5, 5);
+                    return GuessingGameResult(1, 5, 5,amount,guessNumber);
                 case "medium":
-                    return GuessingGameResult(1, 10, 10);
+                    return GuessingGameResult(1, 10, 10,amount,guessNumber);
                 case "hard":
-                    return GuessingGameResult(1, 15, 15);
+                    return GuessingGameResult(1, 15, 15,amount,guessNumber);
                 default:
                     Console.WriteLine("enter a correct string");
-                    return ChooseDifficultyLevelWhichReturnMinMaxMutipler();
+                    return ChooseDifficultyLevelWhichReturnMinMaxMutipler(amount,guessNumber);
             }
 
         }
-        public string GuessingGameResult(int minRange, int maxRange, int multiplier)
+        public string GuessingGameResult(int minRange, int maxRange, int multiplier,int amount,int guessNumber)
         {
 
             int randomNumber = _numberGenerator.Generate(minRange, maxRange);
 
-            int amount = MoneyToBet() * multiplier;
+            int betAmount =  amount * multiplier;
 
-            if (GuessNumber() == randomNumber)
+            if (guessNumber == randomNumber)
             {
-                Console.WriteLine($"You won {amount} dollars.");
-                Console.WriteLine("Congratulations!!");
+                Console.WriteLine($"You won {betAmount} dollars.");
+                return "Congratulations!!";
             }
             else
-            {
+            
                 Console.WriteLine($"Guess number is {randomNumber}");
-                Console.WriteLine("Sorry, you lost.");
-            }
-
-            Console.WriteLine($"Let's Start Once More");
-            return ChooseDifficultyLevelWhichReturnMinMaxMutipler();
+                return"Sorry, you lost.";
+            
         }
     }
 }

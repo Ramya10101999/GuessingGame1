@@ -13,12 +13,12 @@ public class UnitTest1
         int minRange = 1;
         int maxRange = 5;
         int guessNumber = 3;
+        int amount =12;
         INumberGenerator numberGenerator = Substitute.For<INumberGenerator>();
         numberGenerator.Generate(minRange, maxRange).Returns(guessNumber);
         GuessingGameService service = new GuessingGameService(numberGenerator);
-        string result = service.GuessingGameResult(minRange, maxRange, 5);
-        Assert.Equal("Congratulations", result);
-
+        string result = service.GuessingGameResult(minRange, maxRange, 5,amount,3);
+        Assert.Equal("Congratulations!!", result);
     }
 
 
@@ -28,10 +28,11 @@ public class UnitTest1
         int minRange = 1;
         int maxRange = 5;
         int guessNumber = 6;
+        int amount =12;
         INumberGenerator numberGenerator = Substitute.For<INumberGenerator>();
         numberGenerator.Generate(minRange, maxRange).Returns(guessNumber);
         GuessingGameService service = new GuessingGameService(numberGenerator);
-        string result = service.GuessingGameResult(minRange, maxRange, 5);
+        string result = service.GuessingGameResult(minRange, maxRange, 5,amount,6);
         Assert.Equal("Sorry, you lost.", result);
 
     }
