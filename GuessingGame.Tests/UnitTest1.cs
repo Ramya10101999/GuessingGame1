@@ -32,7 +32,7 @@ public class UnitTest1
         INumberGenerator numberGenerator = Substitute.For<INumberGenerator>();
         numberGenerator.Generate(minRange, maxRange).Returns(guessNumber);
         GuessingGameService service = new GuessingGameService(numberGenerator);
-        string result = service.GuessingGameResult(minRange, maxRange, 5,amount,6);
+        string result = service.GuessingGameResult(minRange, maxRange, 5,amount,3);
         Assert.Equal("Sorry, you lost.", result);
 
     }
